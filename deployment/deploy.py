@@ -128,8 +128,11 @@ def create(env_vars: dict[str, str]) -> None:
 
     logger.info("Using agent wheel file: %s", AGENT_WHL_FILE)
 
+    DISPLAY_NAME = os.getenv("DISPLAY_NAME", f"agent-{int(time.time())}")
+
     remote_agent = agent_engines.create(
         adk_app,
+        display_name=DISPLAY_NAME,
         requirements=[AGENT_WHL_FILE],
         extra_packages=[AGENT_WHL_FILE],
         env_vars=env_vars,

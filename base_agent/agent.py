@@ -1,18 +1,10 @@
 """Top level agent"""
 
-import base64
-import json
 import logging
 import os
-from datetime import date
-from pathlib import Path
 
 from google.adk.agents import LlmAgent
-from google.adk.tools import load_artifacts
-
 from google.genai import types
-
-from .prompts import return_instructions_root
 
 # --- Logging setup ----------------------------------------------------------
 
@@ -35,6 +27,8 @@ logger = logging.getLogger(__name__)
 logger.info("Libraries imported and logging configured.")
 
 # --- Root Agent Definition ----------------------------------------------------
+
+from .prompts import return_instructions_root
 
 def get_root_agent() -> LlmAgent:
     tools = []
