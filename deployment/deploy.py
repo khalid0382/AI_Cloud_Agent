@@ -123,8 +123,11 @@ def create(env_vars: dict[str, str]) -> None:
 
     if not os.path.exists(AGENT_WHL_FILE):
         logger.error("Agent wheel file not found at: %s", AGENT_WHL_FILE)
-        # Consider adding instructions here on how to build the wheel file
-        raise FileNotFoundError(f"Agent wheel file not found: {AGENT_WHL_FILE}")
+        raise FileNotFoundError(
+            f"Agent wheel file not found: {AGENT_WHL_FILE}\n"
+            "Rebuild it first from the project root:\n"
+            "  uv build --output deployment/"
+        )
 
     logger.info("Using agent wheel file: %s", AGENT_WHL_FILE)
 
