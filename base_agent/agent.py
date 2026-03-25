@@ -36,7 +36,7 @@ def get_root_agent() -> LlmAgent:
         model=os.getenv("ROOT_AGENT_MODEL", "gemini-2.5-pro"),
         name="base_root_agent",
         instruction=return_instructions_root(),
-        tools=tools,  # type: ignore
+        tools=tools,
         generate_content_config=types.GenerateContentConfig(temperature=0.01),
     )
 
